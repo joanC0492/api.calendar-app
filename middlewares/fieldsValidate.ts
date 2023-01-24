@@ -15,12 +15,10 @@ export const fieldsValidate = (
   // Si hay errores
   // 400 - Es un error del front al mandar los datos
   if (!errors.isEmpty()) {
-    return res.json({
+    return res.status(400).json({
       ok: false,
       errors: errors.mapped(),
     });
   }
   next();
 };
-
-

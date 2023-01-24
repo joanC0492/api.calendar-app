@@ -28,11 +28,11 @@ export const jwtValidate = (
     req.body.uid = payload.uid;
     req.body.name = payload.name;
   } catch (error) {
-    console.log(error);
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       msg: "token no valido",
     });
   }
   next();
 };
+

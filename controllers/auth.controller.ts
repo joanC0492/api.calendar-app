@@ -80,9 +80,13 @@ const loginUser = async (req: Request, res: Response) => {
 const validateToken = async (req: Request, res: Response) => {
   const { uid, name }: { uid: string; name: string } = req.body;
 
-  // Generamos un nuevo token JsonWebToken (JWT)
-  const token = await generateJWT(uid, name);
-  res.json({ ok: true, token: token });
+  try {
+    // Generamos un nuevo token JsonWebToken (JWT)
+    const token = await generateJWT(uid, name);
+    return res.json({ ok: true, uid: uid, name: name, token: token });
+  } catch (error) {
+    return res.status(500).json({ ok: false, msg: "No se pudo generar el token" });
+  }
 };
 
 export { createUser, loginUser, validateToken };
