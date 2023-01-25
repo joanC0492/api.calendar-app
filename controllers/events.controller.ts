@@ -52,6 +52,8 @@ const updateEvent = async (req: Request, res: Response) => {
 
     // Validamos si tiene permisos
     // Cuando no esta autorizado se retorna 401
+    // Es el usuario que lo creo
+    // uid es el usuario que intenta modificar
     if (event.user.toString() !== uid)
       return res.status(401).json({
         ok: false,
