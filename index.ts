@@ -31,9 +31,9 @@ app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/events", eventsRouter);
 
-app.use("*", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
+// app.use("*", (req, res) => {
+//   res.sendFile(__dirname + "/public/index.html");
+// });
 
 // Escuchar peticiones
 app.listen(PORT, () => console.log(`Conectado en el puerto desde el ${PORT}`));
